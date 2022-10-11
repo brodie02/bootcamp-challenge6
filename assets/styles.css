@@ -1,0 +1,44 @@
+* {
+    padding: 0px;
+    margin: 0px;
+    font-family: 'Poppins', sans-serif;
+}
+
+header {
+    display: flex;
+    justify-content: center;
+    background-color: blue;
+    padding: 10px;
+}
+
+header h1 {
+    color: white;
+}
+
+main {
+    display: flex;
+}
+
+.search-section {
+    display: flex;
+    flex-direction: column;
+    width: 20%;
+    margin: 5px;
+    padding: 5px;
+    gap: 10px;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+}
+
+.weather-section {
+    display: flex;
+    flex-direction: column;
+    width: 80%;
+    margin: 5px;
+    margin-bottom: 20px;
+    padding: 5px;
+    gap: 20px;
+}
