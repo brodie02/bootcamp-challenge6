@@ -22,23 +22,33 @@ main {
 .search-section {
     display: flex;
     flex-direction: column;
-    width: 20%;
     margin: 5px;
     padding: 5px;
     gap: 10px;
+    width: 20%;
 }
 
 .container {
     display: flex;
     flex-direction: column;
+    width: 100%;
 }
 
 .weather-section {
     display: flex;
     flex-direction: column;
-    width: 80%;
     margin: 5px;
     margin-bottom: 20px;
-    padding: 5px;
+    padding: 10px;
     gap: 20px;
+    border: 2px solid black;
+}
+
+.five-day-container {
+    display: flex;
+    flex-direction: column;
+}
+
+.card-container {
+    display: flex;
 }
