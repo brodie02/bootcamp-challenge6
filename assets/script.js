@@ -1,21 +1,10 @@
 var apiKey = "cb85dae758eedd554f85531872892ce8" 
+var cityInput = document.querySelector("#city-input")
 
-// API fetch for geocode API (to convert cities into latitude and longitude)
-function fetchGeocodeAPI() {
-    var geocodeAPI = "http://api.openweathermap.org/geo/1.0/direct?q=London&appid=" + apiKey
-    fetch(geocodeAPI)
-        .then(function(response) {
-            return response.json()
-        })
-        .then(function(data) {
-            console.log(data[0].lat);
-            console.log(data[0].lon);
-        })
-}
-
-function fetchWeatherAPI() {
-    var weatherAPI = "https://api.openweathermap.org/data/3.0/onecall?lat={lat}&lon={lon}&exclude={part}&appid=" + apiKey
-    fetch(weatherAPI)
+function fetchCurrentWeatherAPI() {
+    var url = "https://api.openweathermap.org/data/2.5/weather?q=London&units=metric&appid=" + apiKey
+    var oneCallUrl = "https://api.openweathermap.org/data/2.5/onecall?lat=33.44&lon=-94.04&exclude=hourly,daily&appid=" + apiKey
+    fetch(oneCallUrl)
     .then(function(response) {
         return response.json()
     })
@@ -24,11 +13,20 @@ function fetchWeatherAPI() {
     })
 }
 
-
-
+function fetchFutureWeatherAPI() {
+    var url = "https://api.openweathermap.org/data/2.5/forecast?q=London&units=metric&appid=" + apiKey
+    fetch(url)
+    .then(function(response) {
+        return response.json()
+    })
+    .then(function(data) {
+        console.log(data);
+    })
+}
 
 function init() {
-    fetchGeocodeAPI()
+    fetchCurrentWeatherAPI()
+    fetchFutureWeatherAPI()
 }
 
 init()
