@@ -4,6 +4,13 @@ function getCityInput() {
     var city = document.getElementById("city-input").value
 
     fetchGeoCodeAPI(city)
+    addWeatherInfo(city)
+}
+
+function addWeatherInfo(city) {
+    var cityEl = document.querySelector(".weather-section")
+    
+    cityEl.textContent = "City: " + city
 }
 
 document.getElementById("search-button").addEventListener("click", getCityInput)
@@ -22,7 +29,7 @@ function fetchGeoCodeAPI(city) {
 
 function fetchCurrentWeatherAPI(lat, lon) {
     var url = "https://api.openweathermap.org/data/2.5/weather?q=London&units=metric&appid=" + apiKey
-    var oneCallUrl = "https://api.openweathermap.org/data/2.5/onecall?lat=" + lat + "&lon=" + lon + "&exclude=hourly,daily&appid=d1acb13869b02cbe9450cb2a103eba92"
+    var oneCallUrl = "https://api.openweathermap.org/data/2.5/onecall?lat=" + lat + "&lon=" + lon + "&appid=d1acb13869b02cbe9450cb2a103eba92"
     fetch(oneCallUrl)
     .then(function(response) {
         return response.json()
@@ -42,8 +49,6 @@ function fetchFutureWeatherAPI() {
         console.log(data);
     })
 }
-
-
 
 
 function init() {
