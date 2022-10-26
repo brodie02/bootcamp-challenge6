@@ -1,5 +1,12 @@
 var apiKey = "cb85dae758eedd554f85531872892ce8" 
-var city = document.querySelector("#city-input").value
+
+function getCityInput() {
+    var city = document.getElementById("city-input").value
+
+    fetchGeoCodeAPI(city)
+}
+
+document.getElementById("search-button").addEventListener("click", getCityInput)
 
 function fetchGeoCodeAPI(city) {
     var url = "http://api.openweathermap.org/geo/1.0/direct?q=" + city + "&limit=1&appid=" + apiKey
@@ -36,8 +43,10 @@ function fetchFutureWeatherAPI() {
     })
 }
 
+
+
+
 function init() {
-    fetchGeoCodeAPI("Adelaide")
     //fetchFutureWeatherAPI()
 }
 
