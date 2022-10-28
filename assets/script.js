@@ -49,10 +49,18 @@ function addWeatherInfo(city, temp, wind, humid, uvi) {
     var tempEl = document.querySelector(".weather-section").children[1]
     var windEl = document.querySelector(".weather-section").children[2]
     var humidEl = document.querySelector(".weather-section").children[3]
-    var uviEl = document.querySelector(".weather-section").children[4]
+    var uviEl = document.querySelector("#uv")
 
     tempEl.textContent = "Temperature: " + temp
     windEl.textContent = "Wind Speed: " + wind
     humidEl.textContent = "Humidity: " + humid
-    uviEl.textContent = "UV Index: " + uvi    
+    uviEl.textContent = uvi
+    
+    if (uvi < 3) {
+        uviEl.classList.add("favorable")
+    } else if (uvi > 7) {
+        uviEl.classList.add("severe")
+    } else {
+        uviEl.classList.add("moderate")
+    }
 }

@@ -52,3 +52,21 @@ main {
 .card-container {
     display: flex;
 }
+
+.favorable {
+    background-color: lime;
+    padding: 3px 10px;
+    border-radius: 5px;
+}
+
+.moderate {
+    background-color: orange;
+    padding: 3px 10px;
+    border-radius: 5px;
+}
+
+.severe {
+    background-color: red;
+    padding: 3px 10px;
+    border-radius: 5px;
+}
