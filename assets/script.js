@@ -34,13 +34,15 @@ function fetchWeatherAPI(lat, lon) {
         // console.log(data.current.wind_speed + " " + "KMPH");
         // console.log(data.current.humidity + "%");
         // console.log(data.current.uvi);
+        // console.log(data.current.weather[0].description);
         
         addWeatherInfo(data.timezone.split("/")[1], data.current.temp + "°C", data.current.wind_speed + " " + "KMPH", data.current.humidity + "%", data.current.uvi)
+        addWeatherIcon(data.current.weather[0].description)
     })
 }
 
 function addCityName(city) {
-    var cityEl = document.querySelector(".weather-section").children[0]
+    var cityEl = document.querySelector("#city")
 
     cityEl.innerHTML = "City: " + city + " (" + moment().format("Do MMM YYYY") + ")"
 }
@@ -62,5 +64,42 @@ function addWeatherInfo(city, temp, wind, humid, uvi) {
         uviEl.classList.add("severe")
     } else {
         uviEl.classList.add("moderate")
+    }
+}
+
+function addWeatherIcon(weather) {
+    var iconEl = document.querySelector("#icon")
+
+    switch (weather) {
+        case "clear sky":
+            iconEl.innerHTML = '<iconify-icon inline icon="wi:day-sunny"></iconify-icon>'
+            break;
+        case "few clouds":
+            iconEl.innerHTML = '<iconify-icon inline icon="wi:day-cloudy"></iconify-icon>'
+            break;
+        case "scattered clouds":
+            iconEl.innerHTML = '<iconify-icon inline icon="wi:cloudy"></iconify-icon>'
+            break;
+        case "broken clouds":
+            iconEl.innerHTML = '<iconify-icon inline icon="wi:cloudy"></iconify-icon>'
+            break;
+        case "overcast clouds":
+            iconEl.innerHTML = '<iconify-icon inline icon="wi:cloudy"></iconify-icon>'
+            break;
+        case "shower rain":
+            iconEl.innerHTML = '<iconify-icon inline icon="wi:day-rain"></iconify-icon>'
+            break;
+        case "rain":
+            iconEl.innerHTML = '<iconify-icon inline icon="wi:day-rain"></iconify-icon>'
+            break;
+        case "thunderstorm":
+            iconEl.innerHTML = '<iconify-icon inline icon="wi:thunderstorm"></iconify-icon>'
+            break;
+        case "snow":
+            iconEl.innerHTML = '<iconify-icon inline icon="wi:snowflake-cold"></iconify-icon>'
+            break;
+        case "mist":
+            iconEl.innerHTML = '<iconify-icon inline icon="wi:fog"></iconify-icon>'
+            break;
     }
 }
