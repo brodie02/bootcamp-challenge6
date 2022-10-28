@@ -4,13 +4,7 @@ function getCityInput() {
     var city = document.getElementById("city-input").value
 
     fetchGeoCodeAPI(city)
-    addWeatherInfo(city)
-}
-
-function addWeatherInfo(city) {
-    var cityEl = document.querySelector(".weather-section")
-    
-    cityEl.textContent = "City: " + city
+    // addWeatherInfo(city)
 }
 
 document.getElementById("search-button").addEventListener("click", getCityInput)
@@ -35,9 +29,29 @@ function fetchWeatherAPI(lat, lon) {
     })
     .then(function(data) {
         console.log(data);
-        console.log(data.current.temp + "°C");
-        console.log(data.current.wind_speed + " " + "KMPH");
-        console.log(data.current.humidity + "%");
-        console.log(data.current.uvi);
+        // console.log(data.timezone.split("/")[1]);
+        // console.log(data.current.temp + "°C");
+        // console.log(data.current.wind_speed + " " + "KMPH");
+        // console.log(data.current.humidity + "%");
+        // console.log(data.current.uvi);
+        
+        addWeatherInfo(data.timezone.split("/")[1], data.current.temp + "°C", data.current.wind_speed + " " + "KMPH", data.current.humidity + "%", data.current.uvi)
     })
+}
+
+function addWeatherInfo(city, temp, wind, humid, uvi) {
+    var cityEl = document.querySelector(".weather-section").children[0]
+    var tempEl = document.querySelector(".weather-section").children[1]
+    var windEl = document.querySelector(".weather-section").children[2]
+    var humidEl = document.querySelector(".weather-section").children[3]
+    var uviEl = document.querySelector(".weather-section").children[4]
+
+    cityEl.textContent = "City: " + city
+    tempEl.textContent = "Temperature: " + temp
+    windEl.textContent = "Wind Speed: " + wind
+    humidEl.textContent = "Humidity: " + humid
+    uviEl.textContent = "UV Index: " + uvi
+
+
+    
 }
