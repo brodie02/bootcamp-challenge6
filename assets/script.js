@@ -60,10 +60,16 @@ function addWeatherInfo(city, temp, wind, humid, uvi) {
     
     if (uvi < 3) {
         uviEl.classList.add("favorable")
+        uviEl.classList.remove("severe")
+        uviEl.classList.remove("moderate")
     } else if (uvi > 7) {
         uviEl.classList.add("severe")
-    } else {
+        uviEl.classList.remove("moderate")
+        uviEl.classList.remove("favorable")
+    } else { 
         uviEl.classList.add("moderate")
+        uviEl.classList.remove("favorable")
+        uviEl.classList.remove("severe")
     }
 }
 
