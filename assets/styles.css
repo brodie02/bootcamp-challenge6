@@ -7,8 +7,9 @@
 header {
     display: flex;
     justify-content: center;
-    background-color: blue;
     padding: 10px;
+    background: rgb(92,96,240);
+    background: linear-gradient(90deg, rgba(92,96,240,1) 0%, rgba(99,177,233,1) 47%, rgba(25,217,246,1) 100%);
 }
 
 header h1 {
