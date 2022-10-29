@@ -113,11 +113,22 @@ function addWeatherIcon(weather) {
 }
 
 function addFutureWeatherCards(data) {
+    var cardContainer = document.querySelector(".five-card-container")
+    var cardEl = document.querySelector(".card-container")
+    
+    cardContainer.classList.remove(".hide")
+
     for (var i = 0; i < 5; i++) {
         var temp = data.daily[i + 1].temp.max + "°C"
         var wind = data.daily[i + 1].wind_speed + " KMPH"
         var humid = data.daily[i + 1].humidity + "%"
-        
+        var date = moment().add(i + 1, "d").format("Do MMM YYYY")
 
+        cardContainer.children[i].children[0].innerHTML = date
+        cardContainer.children[i].children[2].innerHTML = "Temperature: " + temp
+        cardContainer.children[i].children[3].innerHTML = "Wind Speed: " + wind
+        cardContainer.children[i].children[4].innerHTML = "Humidity: " + humid
+        
     }
+
 }
