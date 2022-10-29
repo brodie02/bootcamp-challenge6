@@ -160,10 +160,10 @@ function addWeatherIcon(weather, data) {
 }
 
 function addFutureWeatherCards(data) {
+    var futureContainer = document.querySelector(".five-day-container")
     var cardContainer = document.querySelector(".five-card-container")
-    var cardEl = document.querySelector(".card-container")
-    
-    cardContainer.classList.remove(".hide")
+
+    futureContainer.classList.remove("hide")
 
     for (var i = 0; i < 5; i++) {
         var temp = data.daily[i + 1].temp.max + "°C"
