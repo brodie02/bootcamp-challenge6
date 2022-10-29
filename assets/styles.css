@@ -50,8 +50,20 @@ main {
     flex-direction: column;
 }
 
+.five-card-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin: 5px 5px 0px 0px;
+}
+
 .card-container {
     display: flex;
+    flex-direction: column;
+    background-color: rgb(32, 70, 104);
+    color: white;
+    padding: 10px 20px 10px 10px;
+    gap: 15px;
 }
 
 .favorable {
@@ -70,4 +82,8 @@ main {
     background-color: red;
     padding: 3px 10px;
     border-radius: 5px;
+}
+
+.hide {
+    display: none;
 }

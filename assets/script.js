@@ -17,6 +17,7 @@ function fetchGeoCodeAPI(city) {
     })
     .then(function(data) {
         //console.log(data);
+
         fetchWeatherAPI(data[0].lat, data[0].lon)
     })
 }
@@ -29,15 +30,11 @@ function fetchWeatherAPI(lat, lon) {
     })
     .then(function(data) {
         console.log(data);
-        // console.log(data.timezone.split("/")[1]);
-        // console.log(data.current.temp + "°C");
-        // console.log(data.current.wind_speed + " " + "KMPH");
-        // console.log(data.current.humidity + "%");
-        // console.log(data.current.uvi);
-        // console.log(data.current.weather[0].description);
+        //console.log(data.daily[0].temp.day);
     
-        addWeatherInfo(data.timezone.split("/")[1], data.current.temp + "°C", data.current.wind_speed + " " + "KMPH", data.current.humidity + "%", data.current.uvi)
+        addWeatherInfo(data.current.temp + "°C", data.current.wind_speed + " KMPH", data.current.humidity + "%", data.current.uvi)
         addWeatherIcon(data.current.weather[0].main)
+        addFutureWeatherCards(data)
     })
 }
 
@@ -47,7 +44,7 @@ function addCityName(city) {
     cityEl.innerHTML = "City: " + city + " (" + moment().format("Do MMM YYYY") + ")"
 }
 
-function addWeatherInfo(city, temp, wind, humid, uvi) {
+function addWeatherInfo(temp, wind, humid, uvi) {
     var tempEl = document.querySelector(".weather-section").children[1]
     var windEl = document.querySelector(".weather-section").children[2]
     var humidEl = document.querySelector(".weather-section").children[3]
@@ -112,5 +109,15 @@ function addWeatherIcon(weather) {
         case "Tornado":
             iconEl.innerHTML = '<iconify-icon inline icon="wi:tornado"></iconify-icon>'
             break;
+    }
+}
+
+function addFutureWeatherCards(data) {
+    for (var i = 0; i < 5; i++) {
+        var temp = data.daily[i + 1].temp.max + "°C"
+        var wind = data.daily[i + 1].wind_speed + " KMPH"
+        var humid = data.daily[i + 1].humidity + "%"
+        
+
     }
 }
