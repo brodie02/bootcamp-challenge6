@@ -57,7 +57,7 @@ main {
     margin: 5px 5px 0px 0px;
 }
 
-.card-container {
+.card {
     display: flex;
     flex-direction: column;
     background-color: rgb(32, 70, 104);

@@ -33,7 +33,7 @@ function fetchWeatherAPI(lat, lon) {
         //console.log(data.daily[0].temp.day);
     
         addWeatherInfo(data.current.temp + "°C", data.current.wind_speed + " KMPH", data.current.humidity + "%", data.current.uvi)
-        addWeatherIcon(data.current.weather[0].main)
+        addWeatherIcon(data.current.weather[0].main, data)
         addFutureWeatherCards(data)
     })
 }
@@ -70,8 +70,53 @@ function addWeatherInfo(temp, wind, humid, uvi) {
     }
 }
 
-function addWeatherIcon(weather) {
+function addWeatherIcon(weather, data) {
     var iconEl = document.querySelector("#icon")
+    var cardContainer = document.querySelector(".five-card-container")
+
+    for (var i = 0; i < 5; i++) {
+        var futureIcon = data.daily[i + 1].weather[0].main
+        
+        cardContainer.children[i].children[1].innerHTML
+
+        switch (futureIcon) {
+            case "Clear":
+                cardContainer.children[i].children[1].innerHTML = '<iconify-icon inline icon="wi:day-sunny" width="50" height="50"></iconify-icon>'
+                break;
+            case "Clouds":
+                cardContainer.children[i].children[1].innerHTML = '<iconify-icon inline icon="wi:day-cloudy" width="50" height="50"></iconify-icon>'
+                break;
+            case "Rain":
+                cardContainer.children[i].children[1].innerHTML = '<iconify-icon inline icon="wi:day-rain" width="50" height="50"></iconify-icon>'
+                break;
+            case "Drizzle":
+                cardContainer.children[i].children[1].innerHTML = '<iconify-icon inline icon="wi:day-rain" width="50" height="50"></iconify-icon>'
+                break;
+            case "Thunderstorm":
+                cardContainer.children[i].children[1].innerHTML = '<iconify-icon inline icon="wi:thunderstorm" width="50" height="50"></iconify-icon>'
+                break;
+            case "Snow":
+                cardContainer.children[i].children[1].innerHTML = '<iconify-icon inline icon="wi:snowflake-cold" width="50" height="50"></iconify-icon>'
+                break;
+            case "Mist":
+            case "Smoke":
+            case "Haze":
+            case "Fog":
+                cardContainer.children[i].children[1].innerHTML = '<iconify-icon inline icon="wi:fog" width="50" height="50"></iconify-icon>'
+                break;
+            case "Dust":
+            case "Sand":
+            case "Ash":
+                cardContainer.children[i].children[1].innerHTML = '<iconify-icon inline icon="wi:sandstorm" width="50" height="50"></iconify-icon>'
+                break;
+            case "Squall":
+                cardContainer.children[i].children[1].innerHTML = '<iconify-icon inline icon="wi:strong-wind" width="50" height="50"></iconify-icon>'
+                break;
+            case "Tornado":
+                cardContainer.children[i].children[1].innerHTML = '<iconify-icon inline icon="wi:tornado" width="50" height="50"></iconify-icon>'
+                break;
+        }
+    }
 
     switch (weather) {
         case "Clear":
@@ -110,6 +155,8 @@ function addWeatherIcon(weather) {
             iconEl.innerHTML = '<iconify-icon inline icon="wi:tornado"></iconify-icon>'
             break;
     }
+
+    
 }
 
 function addFutureWeatherCards(data) {
@@ -128,7 +175,6 @@ function addFutureWeatherCards(data) {
         cardContainer.children[i].children[2].innerHTML = "Temperature: " + temp
         cardContainer.children[i].children[3].innerHTML = "Wind Speed: " + wind
         cardContainer.children[i].children[4].innerHTML = "Humidity: " + humid
-        
     }
 
 }
