@@ -1,5 +1,7 @@
 var apiKey = "47f166773e351368285402b79068ea73" 
 
+var history = []
+
 function getCityInput() {
     var city = document.getElementById("city-input").value
 
@@ -181,5 +183,29 @@ function addFutureWeatherCards(data) {
 }
 
 function addHistory(city) {
-    var historyEl = document.querySelector("#history")
+    var historyContainer = document.querySelector("#history")
+
+    var historyButton = document.createElement("button")
+
+    historyButton.textContent = city
+
+    historyContainer.appendChild(historyButton)
+
+    history = historyButton
+
 }
+
+function storeHistory() {
+    localStorage.setItem("history", JSON.stringify(history))
+}
+
+function printHistoryData(event) {
+    var element = event.target
+
+    var city = element.innerHTML
+
+    fetchGeoCodeAPI(city)
+    addCityName(city)
+}
+
+document.querySelector("#history").addEventListener("click", printHistoryData)
