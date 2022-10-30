@@ -29,6 +29,12 @@ main {
     width: 20%;
 }
 
+#history {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
 .container {
     display: flex;
     flex-direction: column;

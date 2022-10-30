@@ -5,6 +5,7 @@ function getCityInput() {
 
     fetchGeoCodeAPI(city)
     addCityName(city)
+    addHistory(city)
 }
 
 document.getElementById("search-button").addEventListener("click", getCityInput)
@@ -177,4 +178,8 @@ function addFutureWeatherCards(data) {
         cardContainer.children[i].children[4].innerHTML = "Humidity: " + humid
     }
 
+}
+
+function addHistory(city) {
+    var historyEl = document.querySelector("#history")
 }
