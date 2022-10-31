@@ -11,7 +11,7 @@ function getCityInput() {
 document.getElementById("search-button").addEventListener("click", getCityInput)
 
 function fetchGeoCodeAPI(city) {
-    var url = "http://api.openweathermap.org/geo/1.0/direct?q=" + city + "&limit=1&appid=" + apiKey
+    var url = "https://api.openweathermap.org/geo/1.0/direct?q=" + city + "&limit=1&appid=" + apiKey
     fetch(url)
     .then(function(response) {
         return response.json()
