@@ -1,23 +1,11 @@
 var apiKey = "47f166773e351368285402b79068ea73" 
 
-// var history = []
-
-// function saveHistory(city) {
-//     for (var i = 0; i < history.length; i++) {
-//         history[i] = city
-//         localStorage.setItem("history",JSON.stringify(history));
-//     }
-// }
-
-
-
 function getCityInput() {
     var city = document.getElementById("city-input").value
 
     fetchGeoCodeAPI(city)
     addCityName(city)
     addHistory(city)
-    saveHistory(city)
 }
 
 document.getElementById("search-button").addEventListener("click", getCityInput)
@@ -197,12 +185,10 @@ function addHistory(city) {
 
     var historyButton = document.createElement("button")
 
-    
     historyButton.textContent = city
 
     historyContainer.appendChild(historyButton)
 }
-
 
 function printHistoryData(event) {
     var element = event.target
