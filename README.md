@@ -17,7 +17,7 @@ To access this website, follow the link below to view the webpage. Input a city 
 
 Below is the link to the webpage
 
-https://brodie02.github.io/bootcamp-challenge6/
+https://brodie02.github.io/weather-dashboard/
 
 ![image of webpage](./assets/images/screenshot.png)
 
